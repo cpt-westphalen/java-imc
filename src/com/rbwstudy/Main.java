@@ -6,7 +6,7 @@ public class Main {
 
     private static final Scanner entrada = new Scanner(System.in);
 
-    public static String getInputs() {
+    public static String newImcCalc() {
 
         System.out.println("Entre com o peso em kg:");
         float peso = entrada.nextFloat();
@@ -14,10 +14,10 @@ public class Main {
         System.out.println("Entre com a altura em metros:");
         float altura = entrada.nextFloat();
 
-        return calcularImc(peso,altura);
+        return classificarImc(peso,altura);
     }
 
-    public static String calcularImc(float peso, float altura) {
+    public static String classificarImc(float peso,float altura) {
         double[] comparacoesImc = {18.5,24.9,29.9,39.9, 100};
         String[] classificacoes = {"Magreza","Normal","Sobrepeso","Obesidade","Obesidade extrema"};
         float imc = peso / (altura * altura);
@@ -28,12 +28,14 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
-        System.out.println("Gostaria de calcular novo IMC? (1=sim, 0=não)");
-        while (entrada.nextInt() == 1) {
-            System.out.println(getInputs());
-            System.out.println("Gostaria de calcular novo IMC? (1=sim, 0=não)");
+        System.out.println("Gostaria de calcular um IMC? (s/n)");
+        String teste = entrada.nextLine();
+        while (!"n".equals(teste)) {
+            System.out.println(newImcCalc());
+            System.out.println("Gostaria de calcular um novo IMC? (s/n)");
+            entrada.nextLine();
+            teste = entrada.nextLine();
         }
-
+        System.out.println("Programa encerrado.");
     }
 }
